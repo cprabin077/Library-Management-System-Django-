@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 
 
     # project app
-    'member'
+    'member',
+    'librarian',
 ]
 
 MIDDLEWARE = [
