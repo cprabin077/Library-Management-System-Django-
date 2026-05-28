@@ -41,3 +41,13 @@ def memberupdate(request, id):
         },status.HTTP_200_OK)
     else:
         return Response(serializer.errors,status.HTTP_422_UNPROCESSABLE_ENTITY)
+    
+
+
+@api_view(['DELETE'])
+def memberdelete(request,id):
+    member = Member.objects.filter(id=id)
+    member.delete()
+    return Response({
+        "message":"Member successfully deleted"
+    }, status.HTTP_204_NO_CONTENT)
