@@ -1,5 +1,8 @@
-# from django.urls import path
+from django.urls import path
 
-# urlpatterns = [
-#     path('')
-# ]
+from librarian.api.views import LibrarianView
+
+
+urlpatterns = [
+    path('', LibrarianView.as_view(), name="librarian"),
+]
