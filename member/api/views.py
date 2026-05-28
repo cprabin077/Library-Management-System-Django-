@@ -26,3 +26,18 @@ def membercreate(request):
         },status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors,status.HTTP_422_UNPROCESSABLE_ENTITY)
+    
+
+
+# Update member
+@api_view(['PUT'])
+def memberupdate(request, id):
+    member = Member.objects.get(id=id)
+    serializer = MemberSerializer(member, data = request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({
+            "message":"Member successfully updated!!"
+        },status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors,status.HTTP_422_UNPROCESSABLE_ENTITY)
