@@ -8,4 +8,5 @@ dependencies = [
     "django>=6.0.5",
     "django-countries>=8.2.0",
     "djangorestframework>=3.17.1",
+    "drf-spectacular>=0.29.0",
 ]

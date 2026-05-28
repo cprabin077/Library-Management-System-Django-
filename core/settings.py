@@ -40,12 +40,27 @@ INSTALLED_APPS = [
     # 3rd party app
     'rest_framework',
     'django_countries',
+    'drf_spectacular',
 
 
     # project app
     'member',
     'librarian',
 ]
+
+# drf_spectacular
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Library Management System',
+    'DESCRIPTION': 'This is Library Mangement System',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
