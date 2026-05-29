@@ -19,6 +19,29 @@ class LibrarianView(GenericAPIView):
         serializer = LibrarianSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return Response({"message": "Member Successfully created"}, 201)
+            return Response({"message": "Librarian Successfully created"}, 201)
         else:
             return Response(serializer.errors, 422)
+
+class LibrarianUpdateAndDelete(GenericAPIView):
+    queryset = Librarian.objects.all()
+    serializer_class = LibrarianSerializer
+
+    def put(self, request, pk):
+        librarian = Librarian.objects.get(id=pk)
+        data = request.data
+        serializer = LibrarianSerializer(librarian, data =data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                "message":"Librarian successfully updated!!"
+            })
+        else:
+            return Response(serializer.errors,422)
+        
+    def delete(self, request, pk):
+        librarian = Librarian.objects.filter(id=pk)
+        librarian.delete()
+        return Response({
+            "message":"Librarian successfully deleted!!"
+        },204)
