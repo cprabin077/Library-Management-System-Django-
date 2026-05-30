@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # project app
     'member',
     'librarian',
+    'subscription',
 ]
 
 # drf_spectacular
