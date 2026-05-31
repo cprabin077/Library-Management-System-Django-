@@ -14,8 +14,8 @@ class SubscriptionView(GenericAPIView):
         return Response(serializer.data, 200)
     
     def post(self, request):
-        subscription = request.data 
-        serializer = SubscriptionSerializer(data = subscription)
+        data = request.data 
+        serializer = SubscriptionSerializer(data = data)
         if serializer.is_valid():
             serializer.save()
             return Response({
@@ -26,3 +26,18 @@ class SubscriptionView(GenericAPIView):
             return Response(serializer.errors, 422)
         
 
+class SubscriptionUpdateAndDelete(GenericAPIView):
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer
+
+    def put(self, request, pk):
+        subscription = Subscription.objects.get(id = pk)
+        data = request.data 
+        serializer = SubscriptionSerializer(subscription, data = data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                'message' : 'Subscription successfully updated!!'
+            }, 200)
+        else:
+            return Response(serializer.errors, 422)
