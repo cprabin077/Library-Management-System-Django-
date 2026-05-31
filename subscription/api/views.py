@@ -41,3 +41,10 @@ class SubscriptionUpdateAndDelete(GenericAPIView):
             }, 200)
         else:
             return Response(serializer.errors, 422)
+        
+    def delete(self, request, pk):
+        subscription = Subscription.objects.filter(id =pk)
+        subscription.delete()
+        return Response({
+            'message':'Subscription deleted successfully'
+        }, 204)
