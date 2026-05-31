@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/member/', include('member.api.urls')),
     path('api/librarian/', include('librarian.api.urls')),
+     path('api/subscription/', include('subscription.api.urls')),
 
     # YOUR PATTERNS
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
